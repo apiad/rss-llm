@@ -246,6 +246,8 @@ print("## Featured articles\n")
 
 for article in editorial_picks:
     print(f"### {article['title']}\n")
+    print(article['url'])
+    print()
     text: str = article['long'].replace(article['title'], f"[{article['title']}]({article['url']})")
     print(text)
     print()
