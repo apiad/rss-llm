@@ -1,2 +1,3 @@
-# rss-llm
-An LLM-powered RSS summarizer
+# RSS-LLM
+
+> An LLM-powered RSS summarizer
