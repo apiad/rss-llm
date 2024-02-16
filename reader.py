@@ -1,3 +1,4 @@
+from itertools import groupby
 import os
 import sys
 import random
@@ -216,7 +217,7 @@ for a newsletter digest.
 {summaries}
 ---
 
-Write one editorial paragraph explaining, in broad terms,
+Write one editorial paragraph, around five sentences long, explaining in broad terms
 what are the main topics discussed in those articles.
 Use evocative language and strong verbs to encourage readers
 to check the articles in more detail.
@@ -249,13 +250,16 @@ for article in editorial_picks:
     print(text)
     print()
 
+articles = [a for a in articles if a['title'] not in selected_titles]
+articles.sort(key=lambda a: a['category'])
+
 print("## Other articles\n")
 
-for article in articles:
-    if article['title'] in selected_titles:
-        continue
+for category, items in groupby(articles, key=lambda x: x['category']):
+    print(f"### {category}\n")
 
-    text: str = article['short'].replace(article['title'], f"[{article['title']}]({article['url']})")
+    for item in items:
+        text: str = article['short'].replace(article['title'], f"[{article['title']}]({article['url']})")
 
-    print(text)
-    print()
+        print(text)
+        print()
