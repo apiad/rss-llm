@@ -205,9 +205,35 @@ for article in editorial_picks:
     print(article['long'], file=sys.stderr)
 
 
+SUMMARY = """
+Here is a collection of line-one summaries of articles
+for a newsletter digest.
+
+---
+{summaries}
+---
+
+Write one editorial paragraph explaining, in broad terms,
+what are the main topics discussed in those articles.
+Use evocative language and strong verbs to encourage readers
+to check the articles in more detail.
+"""
+
+prompt = SUMMARY.format(summaries="\n\n".join(article['short'] for article in articles))
+response = CLIENT.chat(
+    "mistral-small", messages=[ChatMessage(role="user", content=prompt)]
+)
+
+TOTAL_COST += response.usage.total_tokens
+summary = response.choices[0].message.content
+
 print(f"\nTotal cost: {TOTAL_COST}", file=sys.stderr)
 
 print("# Newsletter Digest\n")
+
+print(summary)
+print()
+
 print("## Featured articles\n")
 
 for article in editorial_picks:
@@ -224,5 +250,5 @@ for article in articles:
 
     text: str = article['short'].replace(article['title'], f"[{article['title']}]({article['url']})")
 
-    print("- " + text)
+    print(text)
     print()

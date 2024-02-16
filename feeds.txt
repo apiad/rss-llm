@@ -25,13 +25,11 @@ https://thisisunpacked.substack.com/feed.xml
 https://www.technologyshouldbesimple.com/feed.xml
 https://wahal.substack.com/feed.xml
 https://divergingasymptotically.substack.com/feed.xml
-https://iamthakgaya.substack.com/feed.xml
 https://societysbackend.com/feed.xml
 https://andrewmaynard.substack.com/feed.xml
 https://nickpotkalitsky.substack.com/feed.xml
 https://thevaluejunction.substack.com/feed.xml
 https://zantafakari.substack.com/feed.xml
-https://blogsystem5.substack.com/feed.xml
 https://techblurbs.substack.com/feed.xml
 https://techops.substack.com/feed.xml
 https://blogsystem5.substack.com/feed.xml
