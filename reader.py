@@ -11,11 +11,11 @@ import datetime
 
 
 def dateformat(s):
-    return datetime.datetime.strptime(s, r"%Y-%m-%d")
+    return datetime.datetime.strptime(s, r"%Y-%m-%dT%H:%M:%S")
 
 
 parser = argparse.ArgumentParser("python reader.py")
-parser.add_argument("--since", type=dateformat, default="2000-01-01")
+parser.add_argument("--since", type=dateformat, default="2000-01-01T00:00:00")
 parser.add_argument("--context", type=int, default=2048)
 parser.add_argument("--picks", type=int, default=5)
 args = parser.parse_args()
@@ -95,9 +95,9 @@ Content:
 Classify this article in one of the following categories:
 
 - Promotional: if the article is mostly promoting some product or service.
-- Informational: if the article is mostly about recent news on some topic.
-- Didactic: if the article is mostly to teach the reader some ability.
-- Interview: if the article is mostly an interview with someone.
+- Informational: if the article is mostly about recent news or is a digest or review of other articles.
+- Didactic: if the article is mostly to teach the reader some ability, like a tutorial.
+- Interview: if the article is mostly an interview with someone or a podcast with a guest.
 - Essay: if the article is mostly a thoughtful argumentation on some topic.
 
 Reply only with the category name.
@@ -121,6 +121,7 @@ with open("feeds.txt") as fp:
 
 summaries = []
 articles = []
+last = args.since
 
 for feed in feeds:
     print(f"\n===\nProcessing: {feed}", file=sys.stderr)
@@ -149,6 +150,8 @@ for feed in feeds:
 
         if date < args.since:
             continue
+
+        last = max(date, last)
 
         body = bs4.BeautifulSoup(content.text, "lxml").get_text("\n")
 
@@ -230,6 +233,8 @@ summary = response.choices[0].message.content
 print(f"\nTotal cost: {TOTAL_COST}", file=sys.stderr)
 
 print("# Newsletter Digest\n")
+
+print(f"> Generated on: {last.strftime(r'%Y-%m-%dT%H:%M:%S')}\n")
 
 print(summary)
 print()
