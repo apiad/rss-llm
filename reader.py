@@ -95,11 +95,10 @@ Content:
 
 Classify this article in one of the following categories:
 
-- Promotional: if the article is mostly promoting some product or service.
-- Informational: if the article is mostly about recent news or is a digest or review of other articles.
-- Didactic: if the article is mostly to teach the reader some ability, like a tutorial.
-- Interview: if the article is mostly an interview with someone or a podcast with a guest.
-- Essay: if the article is mostly a thoughtful argumentation on some topic.
+- Promotions: if the article is about promoting some product or service.
+- News: if the article is discussing recent news or is a digest or review of other articles.
+- Tutorials: if the article is a tutorial or lesson aimed to teach the reader some ability.
+- Essays: if the article is a personal argumentation on some topic.
 
 Reply only with the category name.
 """
@@ -187,7 +186,7 @@ selected_titles = set()
 random.shuffle(articles)
 
 for article in articles:
-    if article['category'] in ["Promotional"]:
+    if article['category'] in ["Promotions"]:
         continue
 
     if article["words"] < 1000:
@@ -210,7 +209,7 @@ for article in editorial_picks:
 
 
 SUMMARY = """
-Here is a collection of line-one summaries of articles
+Here is a collection of one-line summaries of articles
 for a newsletter digest.
 
 ---
@@ -219,10 +218,11 @@ for a newsletter digest.
 
 Write one editorial paragraph, around five sentences long, explaining in broad terms
 what are the main topics discussed in those articles.
+Combine several related topics in a single sentence when possible.
+Do no mention titles or author names.
 Use evocative language and strong verbs to encourage readers
 to check the articles in more detail.
-
-Add a one-liner that summarizes what is, in general, this issue about.
+End with a one-liner that summarizes what is, in general, this issue about.
 """
 
 prompt = SUMMARY.format(summaries="\n\n".join(article['short'] for article in articles))
