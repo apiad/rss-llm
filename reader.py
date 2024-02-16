@@ -220,6 +220,8 @@ Write one editorial paragraph explaining, in broad terms,
 what are the main topics discussed in those articles.
 Use evocative language and strong verbs to encourage readers
 to check the articles in more detail.
+
+Add a one-liner that summarizes what is, in general, this issue about.
 """
 
 prompt = SUMMARY.format(summaries="\n\n".join(article['short'] for article in articles))

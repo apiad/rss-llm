@@ -1,5 +1,4 @@
 https://blog.apiad.net/feed.xml
-https://techwriters.substack.com/feed.xml
 https://edemgold.substack.com/feed.xml
 https://thepythoncodingstack.substack.com/feed.xml
 https://breakingtherules.substack.com/feed.xml
