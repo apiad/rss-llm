@@ -38,7 +38,7 @@ Content:
 ---
 
 Summarize this article in five sentences or less.
-Begin with "In \"{title}\", {author}...".
+Begin with "{author}...".
 """
 
 
@@ -237,7 +237,7 @@ print(f"\nTotal cost: {TOTAL_COST}", file=sys.stderr)
 
 print("# Newsletter Digest\n")
 
-print(f"> Generated on: {last.strftime(r'%Y-%m-%dT%H:%M:%S')}\n")
+print(f"> Timestamp: {last.strftime(r'%Y-%m-%dT%H:%M:%S')}\n")
 
 print(summary)
 print()
@@ -259,7 +259,7 @@ for category, items in groupby(articles, key=lambda x: x['category']):
     print(f"### {category}\n")
 
     for item in items:
-        text: str = article['short'].replace(article['title'], f"[{article['title']}]({article['url']})")
+        text: str = item['short'].replace(item['title'], f"[{item['title']}]({item['url']})")
 
         print(text)
         print()
