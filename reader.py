@@ -18,7 +18,7 @@ def dateformat(s):
 parser = argparse.ArgumentParser("python reader.py")
 parser.add_argument("--since", type=dateformat, default="2000-01-01T00:00:00")
 parser.add_argument("--context", type=int, default=2048)
-parser.add_argument("--picks", type=int, default=5)
+parser.add_argument("--picks", type=int, default=10)
 args = parser.parse_args()
 
 dotenv.load_dotenv()
@@ -65,7 +65,7 @@ Content:
 {body}
 ---
 
-In one sentence, summarize this article.
+Summarize this article in a single, short sentence.
 Begin with "In \"{title}\", {author}...".
 """
 
@@ -252,7 +252,7 @@ for article in editorial_picks:
     print(text)
     print()
 
-articles = [a for a in articles if a['title'] not in selected_titles]
+# articles = [a for a in articles if a['title'] not in selected_titles]
 articles.sort(key=lambda a: a['category'])
 
 print("## Other articles\n")

@@ -32,3 +32,8 @@ https://zantafakari.substack.com/feed.xml
 https://techblurbs.substack.com/feed.xml
 https://techops.substack.com/feed.xml
 https://blogsystem5.substack.com/feed.xml
+https://binks.substack.com/feed.rss
+https://ffmpeg.substack.com/feed.rss
+https://stevestewartwilliams.substack.com/feed.rss
+https://poczwardowski.substack.com/feed.rss
+HTTPS://wirepine.substack.com/feed.rss
